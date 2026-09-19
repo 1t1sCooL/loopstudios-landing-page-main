@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: loopstudios-landing-page-main
+  namespace: default
+spec:
+  selector:
+    app: loopstudios-landing-page-main-app
+  ports:
+    - port: 80
+      targetPort: 80
+  type: ClusterIP

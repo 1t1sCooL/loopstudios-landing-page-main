@@ -1,0 +1,56 @@
+---
+import '../styles/global.css';
+
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : import.meta.env.BASE_URL + '/';
+
+const fontFaces = `
+@font-face {
+  font-family: 'Alata';
+  font-style: normal;
+  font-weight: 400;
+  font-display: optional;
+  src: url(${base}fonts/alata-v12-latin-regular.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Josefin Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-display: optional;
+  src: url(${base}fonts/josefin-sans-v34-latin-300.woff2) format('woff2');
+}
+`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Loopstudios — the leader in interactive VR. Frontend Mentor challenge solution built with Astro."
+    />
+    <link rel="icon" type="image/png" sizes="32x32" href={`${base}images/favicon-32x32.png`} />
+    <link
+      rel="preload"
+      href={`${base}fonts/alata-v12-latin-regular.woff2`}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href={`${base}fonts/josefin-sans-v34-latin-300.woff2`}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <style set:html={fontFaces}></style>
+    <title>Frontend Mentor | Loopstudios landing page</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,14 @@
+node_modules
+dist
+.astro
+.git
+.vercel
+design
+screenshot-desktop.png
+screenshot-mobile.png
+preview.jpg
+README.md
+README-template.md
+style-guide.md
+kubernetes
+Jenkinsfile

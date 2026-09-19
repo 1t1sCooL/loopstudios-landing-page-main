@@ -1,0 +1,210 @@
+---
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : import.meta.env.BASE_URL + '/';
+
+// line breaks match the design mockup exactly
+const creations = [
+  { slug: 'deep-earth', lines: ['Deep', 'earth'] },
+  { slug: 'night-arcade', lines: ['Night', 'arcade'] },
+  { slug: 'soccer-team', lines: ['Soccer', 'team VR'] },
+  { slug: 'grid', lines: ['The', 'grid'] },
+  { slug: 'from-above', lines: ['From up', 'above VR'] },
+  { slug: 'pocket-borealis', lines: ['Pocket', 'borealis'] },
+  { slug: 'curiosity', lines: ['The', 'curiosity'] },
+  { slug: 'fisheye', lines: ['Make it', 'fisheye'] },
+];
+---
+
+<section class="creations container" aria-labelledby="creations-title">
+  <div class="creations-head">
+    <h2 id="creations-title">Our creations</h2>
+    <a href="#" class="see-all" data-desktop>See all</a>
+  </div>
+
+  <ul class="grid">
+    {creations.map(({ slug, lines }) => (
+      <li>
+        <a
+          href="#"
+          class="card"
+          style={`--img-desktop: url(${base}images/desktop/image-${slug}.jpg); --img-mobile: url(${base}images/mobile/image-${slug}.jpg)`}
+        >
+          <span class="card-title">{lines[0]}<br />{lines[1]}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <a href="#" class="see-all" data-mobile>See all</a>
+</section>
+
+<style>
+  .creations {
+    margin-top: 184px;
+    margin-bottom: 185px;
+  }
+
+  /* the mockup grid is 4x256px with ~29.3px gaps: 3px wider than the 1110px container */
+  .creations-head,
+  .grid {
+    width: 1113px;
+    max-width: none;
+  }
+
+  .creations-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  h2 {
+    font-size: 48px;
+    line-height: 48px;
+  }
+
+  .see-all {
+    display: inline-block;
+    width: 158px;
+    height: 42px;
+    line-height: 40px;
+    text-align: center;
+    border: 1px solid var(--black);
+    font-size: 14px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--black);
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  .see-all:hover,
+  .see-all:focus-visible {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .see-all[data-mobile] {
+    display: none;
+  }
+
+  .grid {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: repeat(4, 256px);
+    justify-content: space-between;
+    row-gap: 29px;
+  }
+
+  .card {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    height: 450px;
+    padding: 0 20px 32px 40px;
+    background-image: var(--img-desktop);
+    background-size: cover;
+    background-position: center;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  /* dark gradient for legibility + white veil on hover */
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 65%);
+    transition: opacity 0.3s ease;
+  }
+
+  .card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.75);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .card:hover::after,
+  .card:focus-visible::after {
+    opacity: 1;
+  }
+
+  .card:hover::before,
+  .card:focus-visible::before {
+    opacity: 0;
+  }
+
+  .card-title {
+    position: relative;
+    z-index: 2;
+    font-family: var(--font-heading);
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 32px;
+    text-transform: uppercase;
+    color: var(--white);
+    transition: color 0.3s ease;
+  }
+
+  .card:hover .card-title,
+  .card:focus-visible .card-title {
+    color: var(--black);
+  }
+
+  @media (max-width: 767px) {
+    .creations {
+      margin-top: 96px;
+      margin-bottom: 95px;
+      text-align: center;
+    }
+
+    .creations-head {
+      justify-content: center;
+    }
+
+    h2 {
+      font-size: 32px;
+      line-height: 32px;
+    }
+
+    .see-all[data-desktop] {
+      display: none;
+    }
+
+    .see-all[data-mobile] {
+      display: inline-block;
+      margin-top: 33px;
+    }
+
+    .creations-head,
+    .grid {
+      width: auto;
+    }
+
+    .grid {
+      margin-top: 48px;
+      gap: 24px;
+      grid-template-columns: 1fr;
+    }
+
+    .card {
+      height: 120px;
+      padding: 0 0 20px 20px;
+      background-image: var(--img-mobile);
+      text-align: left;
+    }
+
+    .card::before {
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 70%);
+    }
+
+    .card-title {
+      font-size: 24px;
+      line-height: 24px;
+    }
+  }
+</style>

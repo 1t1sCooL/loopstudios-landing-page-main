@@ -1,0 +1,82 @@
+---
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : import.meta.env.BASE_URL + '/';
+---
+
+<section class="leader container">
+  <picture>
+    <source media="(max-width: 767px)" srcset={`${base}images/mobile/image-interactive.jpg`} />
+    <img
+      src={`${base}images/desktop/image-interactive.jpg`}
+      alt="Man wearing a VR headset, mouth open in excitement"
+      width="731"
+      height="500"
+    />
+  </picture>
+  <div class="leader-copy">
+    <h2>The leader in interactive&nbsp;VR</h2>
+    <p>
+      Founded in 2011, Loopstudios has been producing world-class virtual reality projects for
+      some of the best companies around the globe. Our award-winning creations have transformed
+      businesses through digital experiences that bind to their brand.
+    </p>
+  </div>
+</section>
+
+<style>
+  .leader {
+    position: relative;
+    margin-top: 160px;
+  }
+
+  .leader-copy {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 541px;
+    padding: 98px 0 0 96px;
+    background: var(--white);
+  }
+
+  h2 {
+    font-size: 48px;
+    line-height: 48px;
+  }
+
+  p {
+    margin-top: 25px;
+    max-width: 438px; /* forces the same line breaks as the mockup */
+    color: var(--grey-500);
+  }
+
+  @media (max-width: 767px) {
+    .leader {
+      margin-top: 96px;
+    }
+
+    picture img {
+      width: 100%;
+      height: auto;
+    }
+
+    .leader-copy {
+      position: static;
+      width: auto;
+      padding: 48px 0 0;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 32px;
+      line-height: 32px;
+      padding-inline: 24px;
+    }
+
+    p {
+      margin-top: 16px;
+      max-width: 296px; /* mockup wraps the copy into 7 lines */
+      margin-inline: auto;
+    }
+  }
+</style>

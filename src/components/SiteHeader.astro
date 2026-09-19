@@ -1,0 +1,176 @@
+---
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : import.meta.env.BASE_URL + '/';
+
+const links = ['About', 'Careers', 'Events', 'Products', 'Support'];
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href={base} class="logo" aria-label="Loopstudios home">
+      <img src={`${base}images/logo.svg`} alt="loopstudios" width="192" height="32" />
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary">
+      <ul>
+        {links.map((link) => (
+          <li><a class="underline-link" href="#">{link}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="Open menu"
+    >
+      <img class="icon-open" src={`${base}images/icon-hamburger.svg`} alt="" width="24" height="16" />
+      <img class="icon-close" src={`${base}images/icon-close.svg`} alt="" width="20" height="20" />
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <nav aria-label="Mobile">
+      <ul class="container">
+        {links.map((link) => (
+          <li><a href="#">{link}</a></li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    padding-top: 64px;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    position: relative;
+    z-index: 30;
+  }
+
+  .logo img {
+    width: 192px;
+    height: auto;
+  }
+
+  .desktop-nav ul {
+    display: flex;
+    gap: 33px;
+  }
+
+  .desktop-nav a {
+    color: var(--white);
+    font-size: 15px;
+  }
+
+  .menu-toggle {
+    display: none;
+    position: relative;
+    z-index: 30;
+    padding: 4px;
+  }
+
+  .menu-toggle .icon-close {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: none;
+  }
+
+  @media (max-width: 767px) {
+    .site-header {
+      padding-top: 40px;
+    }
+
+    .logo img {
+      width: 144px;
+    }
+
+    .desktop-nav {
+      display: none;
+    }
+
+    .menu-toggle {
+      display: block;
+    }
+
+    body.menu-open .menu-toggle .icon-open {
+      display: none;
+    }
+
+    body.menu-open .menu-toggle .icon-close {
+      display: block;
+    }
+
+    .mobile-menu {
+      display: flex;
+      align-items: center;
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      background: var(--black);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .mobile-menu nav {
+      width: 100%;
+    }
+
+    body.menu-open .mobile-menu {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-menu ul {
+      display: grid;
+      gap: 24px;
+    }
+
+    .mobile-menu a {
+      font-family: var(--font-heading);
+      font-weight: 300;
+      font-size: 24px;
+      line-height: 25px;
+      text-transform: uppercase;
+      color: var(--white);
+      display: inline-block;
+      transform: translateX(0);
+      transition: transform 0.25s ease, color 0.25s ease;
+    }
+
+    .mobile-menu a:hover,
+    .mobile-menu a:focus-visible {
+      transform: translateX(8px);
+      color: var(--grey-200);
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+
+  toggle?.addEventListener('click', () => {
+    const open = document.body.classList.toggle('menu-open');
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+</script>

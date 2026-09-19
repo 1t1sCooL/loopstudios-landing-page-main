@@ -1,0 +1,162 @@
+---
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : import.meta.env.BASE_URL + '/';
+
+const links = ['About', 'Careers', 'Events', 'Products', 'Support'];
+const socials = [
+  { name: 'Facebook', icon: 'icon-facebook.svg', url: 'https://www.facebook.com' },
+  { name: 'Twitter', icon: 'icon-twitter.svg', url: 'https://www.twitter.com' },
+  { name: 'Pinterest', icon: 'icon-pinterest.svg', url: 'https://www.pinterest.com' },
+  { name: 'Instagram', icon: 'icon-instagram.svg', url: 'https://www.instagram.com' },
+];
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <a href={base} class="logo" aria-label="Loopstudios home">
+      <img src={`${base}images/logo.svg`} alt="loopstudios" width="144" height="24" />
+    </a>
+
+    <ul class="socials">
+      {socials.map(({ name, icon, url }) => (
+        <li>
+          <a class="underline-link" href={url} aria-label={name}>
+            <img src={`${base}images/${icon}`} alt="" width="24" height="24" />
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <nav aria-label="Footer">
+      <ul class="footer-nav">
+        {links.map((link) => (
+          <li><a class="underline-link" href="#">{link}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <p class="copyright">&copy; 2021 Loopstudios. All rights reserved.</p>
+  </div>
+
+  <p class="attribution container">
+    Challenge by
+    <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="noreferrer">Frontend Mentor</a>.
+    Coded by
+    <a href="https://www.frontendmentor.io/profile/1t1sCooL" target="_blank" rel="noreferrer">1t1sCooL</a>.
+  </p>
+</footer>
+
+<style>
+  .site-footer {
+    position: relative;
+    background: var(--black);
+    color: var(--white);
+    padding: 44px 0 43px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    row-gap: 24px;
+  }
+
+  .logo {
+    justify-self: start;
+  }
+
+  .logo img {
+    width: 144px;
+    height: auto;
+  }
+
+  .socials {
+    display: flex;
+    gap: 16px;
+    justify-self: end;
+  }
+
+  .socials a {
+    display: block;
+    transition: transform 0.25s ease;
+  }
+
+  .socials a:hover,
+  .socials a:focus-visible {
+    transform: translateY(-2px);
+  }
+
+  .footer-nav {
+    display: flex;
+    gap: 32px;
+  }
+
+  .footer-nav a {
+    font-size: 15px;
+    color: var(--white);
+  }
+
+  .copyright {
+    justify-self: end;
+    color: var(--grey-500);
+  }
+
+  .attribution {
+    position: absolute;
+    left: 50%;
+    bottom: 12px;
+    transform: translateX(-50%);
+    width: max-content;
+    font-size: 11px;
+    line-height: 1;
+    text-align: center;
+    color: var(--grey-500);
+  }
+
+  .attribution a {
+    color: var(--grey-200);
+    transition: color 0.25s ease;
+  }
+
+  .attribution a:hover,
+  .attribution a:focus-visible {
+    color: var(--white);
+  }
+
+  @media (max-width: 767px) {
+    .site-footer {
+      padding: 56px 0;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      row-gap: 0;
+    }
+
+    .logo {
+      justify-self: center;
+    }
+
+    .footer-nav {
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      margin-top: 32px;
+      text-align: center;
+    }
+
+    .socials {
+      justify-self: center;
+      order: 3;
+      margin-top: 48px;
+    }
+
+    .copyright {
+      justify-self: center;
+      order: 4;
+      margin-top: 16px;
+    }
+  }
+</style>
