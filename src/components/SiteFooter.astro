@@ -66,35 +66,15 @@ const socials = [
     justify-self: start;
   }
 
-  .logo img {
-    width: 144px;
-    height: auto;
-  }
-
   .socials {
     display: flex;
     gap: 16px;
     justify-self: end;
   }
 
-  .socials a {
-    display: block;
-    transition: transform 0.25s ease;
-  }
-
-  .socials a:hover,
-  .socials a:focus-visible {
-    transform: translateY(-2px);
-  }
-
   .footer-nav {
     display: flex;
     gap: 32px;
-  }
-
-  .footer-nav a {
-    font-size: 15px;
-    color: var(--white);
   }
 
   .copyright {
@@ -114,14 +94,42 @@ const socials = [
     color: var(--grey-500);
   }
 
+  .logo img {
+    width: 144px;
+    height: auto;
+  }
+
+  .socials a {
+    display: block;
+  }
+
+  .footer-nav a {
+    font-size: 15px;
+    color: var(--white);
+  }
+
   .attribution a {
     color: var(--grey-200);
-    transition: color 0.25s ease;
+  }
+
+  .socials a:hover,
+  .socials a:focus-visible {
+    transform: translateY(-2px);
   }
 
   .attribution a:hover,
   .attribution a:focus-visible {
     color: var(--white);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .socials a {
+      transition: transform 0.25s ease;
+    }
+
+    .attribution a {
+      transition: color 0.25s ease;
+    }
   }
 
   @media (max-width: 767px) {

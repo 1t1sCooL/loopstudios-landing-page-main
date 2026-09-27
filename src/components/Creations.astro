@@ -74,7 +74,6 @@ const creations = [
     letter-spacing: 5px;
     text-transform: uppercase;
     color: var(--black);
-    transition: background-color 0.25s ease, color 0.25s ease;
   }
 
   .see-all:hover,
@@ -114,8 +113,7 @@ const creations = [
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 65%);
-    transition: opacity 0.3s ease;
+    background: linear-gradient(to top, var(--shade-60), var(--shade-0) 65%);
   }
 
   .card::after {
@@ -123,9 +121,8 @@ const creations = [
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: rgba(255, 255, 255, 0.75);
+    background: var(--veil);
     opacity: 0;
-    transition: opacity 0.3s ease;
   }
 
   .card:hover::after,
@@ -147,12 +144,26 @@ const creations = [
     line-height: 32px;
     text-transform: uppercase;
     color: var(--white);
-    transition: color 0.3s ease;
   }
 
   .card:hover .card-title,
   .card:focus-visible .card-title {
     color: var(--black);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .see-all {
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    .card::before,
+    .card::after {
+      transition: opacity 0.3s ease;
+    }
+
+    .card-title {
+      transition: color 0.3s ease;
+    }
   }
 
   @media (max-width: 767px) {
@@ -199,7 +210,7 @@ const creations = [
     }
 
     .card::before {
-      background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 70%);
+      background: linear-gradient(to right, var(--shade-60), var(--shade-0) 70%);
     }
 
     .card-title {

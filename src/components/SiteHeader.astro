@@ -26,9 +26,10 @@ const links = ['About', 'Careers', 'Events', 'Products', 'Support'];
       aria-expanded="false"
       aria-controls="mobile-menu"
       aria-label="Open menu"
+      data-icon-open={`${base}images/icon-hamburger.svg`}
+      data-icon-close={`${base}images/icon-close.svg`}
     >
-      <img class="icon-open" src={`${base}images/icon-hamburger.svg`} alt="" width="24" height="16" />
-      <img class="icon-close" src={`${base}images/icon-close.svg`} alt="" width="20" height="20" />
+      <img class="menu-icon" src={`${base}images/icon-hamburger.svg`} alt="" width="24" height="16" />
     </button>
   </div>
 
@@ -86,10 +87,6 @@ const links = ['About', 'Careers', 'Events', 'Products', 'Support'];
     padding: 4px;
   }
 
-  .menu-toggle .icon-close {
-    display: none;
-  }
-
   .mobile-menu {
     display: none;
   }
@@ -111,14 +108,6 @@ const links = ['About', 'Careers', 'Events', 'Products', 'Support'];
       display: block;
     }
 
-    body.menu-open .menu-toggle .icon-open {
-      display: none;
-    }
-
-    body.menu-open .menu-toggle .icon-close {
-      display: block;
-    }
-
     .mobile-menu {
       display: flex;
       align-items: center;
@@ -128,7 +117,6 @@ const links = ['About', 'Careers', 'Events', 'Products', 'Support'];
       background: var(--black);
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
     }
 
     .mobile-menu nav {
@@ -154,7 +142,6 @@ const links = ['About', 'Careers', 'Events', 'Products', 'Support'];
       color: var(--white);
       display: inline-block;
       transform: translateX(0);
-      transition: transform 0.25s ease, color 0.25s ease;
     }
 
     .mobile-menu a:hover,
@@ -163,14 +150,30 @@ const links = ['About', 'Careers', 'Events', 'Products', 'Support'];
       color: var(--grey-200);
     }
   }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .mobile-menu {
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .mobile-menu a {
+      transition: transform 0.25s ease, color 0.25s ease;
+    }
+  }
 </style>
 
 <script>
   const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const icon = toggle?.querySelector<HTMLImageElement>('.menu-icon');
 
   toggle?.addEventListener('click', () => {
     const open = document.body.classList.toggle('menu-open');
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    if (icon) {
+      icon.src = (open ? toggle.dataset.iconClose : toggle.dataset.iconOpen) ?? icon.src;
+      icon.width = open ? 20 : 24;
+      icon.height = open ? 20 : 16;
+    }
   });
 </script>
