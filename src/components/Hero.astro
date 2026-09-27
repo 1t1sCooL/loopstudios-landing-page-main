@@ -4,9 +4,15 @@ import SiteHeader from './SiteHeader.astro';
 const base = import.meta.env.BASE_URL.endsWith('/')
   ? import.meta.env.BASE_URL
   : import.meta.env.BASE_URL + '/';
+
+// Hero background URLs depend on the deploy base path, so they are emitted as a
+// static <style> block instead of an inline style attribute.
+const heroVars = `.hero{--hero-desktop:url(${base}images/desktop/image-hero.jpg);--hero-mobile:url(${base}images/mobile/image-hero.jpg)}`;
 ---
 
-<section class="hero" style={`--hero-desktop: url(${base}images/desktop/image-hero.jpg); --hero-mobile: url(${base}images/mobile/image-hero.jpg)`}>
+<style is:global set:html={heroVars}></style>
+
+<section class="hero">
   <SiteHeader />
   <div class="container">
     <h1>Immersive experiences that<br class="m-br" /> deliver</h1>

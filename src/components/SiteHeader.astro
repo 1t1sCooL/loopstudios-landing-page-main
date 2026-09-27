@@ -47,9 +47,8 @@ const links = ['About', 'Careers', 'Events', 'Products', 'Support'];
 <style>
   .site-header {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    inset-block-start: 0;
+    inset-inline: 0;
     z-index: 10;
     padding-block-start: 4rem;
   }
@@ -111,8 +110,10 @@ const links = ['About', 'Careers', 'Events', 'Products', 'Support'];
     .mobile-menu {
       display: flex;
       align-items: center;
-      position: fixed;
-      inset: 0;
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline: 0;
+      block-size: 100vh;
       z-index: 20;
       background: var(--black);
       opacity: 0;

@@ -14,7 +14,18 @@ const creations = [
   { slug: 'curiosity', lines: ['The', 'curiosity'] },
   { slug: 'fisheye', lines: ['Make it', 'fisheye'] },
 ];
+
+// Per-card background URLs depend on the deploy base path, so they are emitted
+// as a static <style> block (keyed by slug) instead of inline style attributes.
+const cardVars = creations
+  .map(
+    ({ slug }) =>
+      `.card-${slug}{--img-desktop:url(${base}images/desktop/image-${slug}.jpg);--img-mobile:url(${base}images/mobile/image-${slug}.jpg)}`
+  )
+  .join('');
 ---
+
+<style is:global set:html={cardVars}></style>
 
 <section class="creations container" aria-labelledby="creations-title">
   <div class="creations-head">
@@ -25,11 +36,7 @@ const creations = [
   <ul class="grid">
     {creations.map(({ slug, lines }) => (
       <li>
-        <a
-          href="#"
-          class="card"
-          style={`--img-desktop: url(${base}images/desktop/image-${slug}.jpg); --img-mobile: url(${base}images/mobile/image-${slug}.jpg)`}
-        >
+        <a href="#" class:list={['card', `card-${slug}`]}>
           <span class="card-title">{lines[0]}<br />{lines[1]}</span>
         </a>
       </li>

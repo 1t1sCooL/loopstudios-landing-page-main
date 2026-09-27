@@ -86,8 +86,8 @@ h3 {
 .underline-link::after {
   content: '';
   position: absolute;
-  left: 50%;
-  bottom: -0.5rem;
+  inset-inline-start: 50%;
+  inset-block-end: -0.5rem;
   width: 1.5rem;
   height: 0.125rem;
   background: var(--white);
