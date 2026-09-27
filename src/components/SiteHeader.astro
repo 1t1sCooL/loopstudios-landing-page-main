@@ -26,9 +26,10 @@ const links = ['About', 'Careers', 'Events', 'Products', 'Support'];
       aria-expanded="false"
       aria-controls="mobile-menu"
       aria-label="Open menu"
+      data-icon-open={`${base}images/icon-hamburger.svg`}
+      data-icon-close={`${base}images/icon-close.svg`}
     >
-      <img class="icon-open" src={`${base}images/icon-hamburger.svg`} alt="" width="24" height="16" />
-      <img class="icon-close" src={`${base}images/icon-close.svg`} alt="" width="20" height="20" />
+      <img class="menu-icon" src={`${base}images/icon-hamburger.svg`} alt="" width="24" height="16" />
     </button>
   </div>
 
@@ -46,11 +47,10 @@ const links = ['About', 'Careers', 'Events', 'Products', 'Support'];
 <style>
   .site-header {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    inset-block-start: 0;
+    inset-inline: 0;
     z-index: 10;
-    padding-top: 64px;
+    padding-block-start: 4rem;
   }
 
   .header-inner {
@@ -65,42 +65,38 @@ const links = ['About', 'Careers', 'Events', 'Products', 'Support'];
   }
 
   .logo img {
-    width: 192px;
+    width: 12rem;
     height: auto;
   }
 
   .desktop-nav ul {
     display: flex;
-    gap: 33px;
+    gap: 2.0625rem;
   }
 
   .desktop-nav a {
     color: var(--white);
-    font-size: 15px;
+    font-size: 0.9375rem;
   }
 
   .menu-toggle {
     display: none;
     position: relative;
     z-index: 30;
-    padding: 4px;
-  }
-
-  .menu-toggle .icon-close {
-    display: none;
+    padding: 0.25rem;
   }
 
   .mobile-menu {
     display: none;
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 47.9375em) {
     .site-header {
-      padding-top: 40px;
+      padding-block-start: 2.5rem;
     }
 
     .logo img {
-      width: 144px;
+      width: 9rem;
     }
 
     .desktop-nav {
@@ -111,24 +107,17 @@ const links = ['About', 'Careers', 'Events', 'Products', 'Support'];
       display: block;
     }
 
-    body.menu-open .menu-toggle .icon-open {
-      display: none;
-    }
-
-    body.menu-open .menu-toggle .icon-close {
-      display: block;
-    }
-
     .mobile-menu {
       display: flex;
       align-items: center;
-      position: fixed;
-      inset: 0;
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline: 0;
+      block-size: 100vh;
       z-index: 20;
       background: var(--black);
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
     }
 
     .mobile-menu nav {
@@ -142,35 +131,50 @@ const links = ['About', 'Careers', 'Events', 'Products', 'Support'];
 
     .mobile-menu ul {
       display: grid;
-      gap: 24px;
+      gap: 1.5rem;
     }
 
     .mobile-menu a {
       font-family: var(--font-heading);
       font-weight: 300;
-      font-size: 24px;
-      line-height: 25px;
+      font-size: 1.5rem;
+      line-height: 1.5625rem;
       text-transform: uppercase;
       color: var(--white);
       display: inline-block;
       transform: translateX(0);
-      transition: transform 0.25s ease, color 0.25s ease;
     }
 
     .mobile-menu a:hover,
     .mobile-menu a:focus-visible {
-      transform: translateX(8px);
+      transform: translateX(0.5rem);
       color: var(--grey-200);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .mobile-menu {
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .mobile-menu a {
+      transition: transform 0.25s ease, color 0.25s ease;
     }
   }
 </style>
 
 <script>
   const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const icon = toggle?.querySelector<HTMLImageElement>('.menu-icon');
 
   toggle?.addEventListener('click', () => {
     const open = document.body.classList.toggle('menu-open');
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    if (icon) {
+      icon.src = (open ? toggle.dataset.iconClose : toggle.dataset.iconOpen) ?? icon.src;
+      icon.width = open ? 20 : 24;
+      icon.height = open ? 20 : 16;
+    }
   });
 </script>

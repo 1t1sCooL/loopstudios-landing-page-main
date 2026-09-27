@@ -8,8 +8,13 @@
   --font-body: 'Alata', sans-serif;
   --font-heading: 'Josefin Sans', sans-serif;
 
-  --container: 1110px;
-  --gutter: 24px;
+  --container: 69.375rem;
+  --gutter: 1.5rem;
+
+  --shade-60: rgba(0, 0, 0, 0.6);
+  --shade-40: rgba(0, 0, 0, 0.4);
+  --shade-0: rgba(0, 0, 0, 0);
+  --veil: rgba(255, 255, 255, 0.75);
 }
 
 *,
@@ -26,8 +31,8 @@ html {
 
 body {
   font-family: var(--font-body);
-  font-size: 15px;
-  line-height: 25px;
+  font-size: 0.9375rem;
+  line-height: 1.5625rem;
   color: var(--black);
   background: var(--white);
   min-height: 100vh;
@@ -81,14 +86,13 @@ h3 {
 .underline-link::after {
   content: '';
   position: absolute;
-  left: 50%;
-  bottom: -8px;
-  width: 24px;
-  height: 2px;
+  inset-inline-start: 50%;
+  inset-block-end: -0.5rem;
+  width: 1.5rem;
+  height: 0.125rem;
   background: var(--white);
   transform: translateX(-50%) scaleX(0);
   transform-origin: center;
-  transition: transform 0.25s ease;
 }
 
 .underline-link:hover::after,
@@ -96,12 +100,8 @@ h3 {
   transform: translateX(-50%) scaleX(1);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+@media (prefers-reduced-motion: no-preference) {
+  .underline-link::after {
+    transition: transform 0.25s ease;
   }
 }
