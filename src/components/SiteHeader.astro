@@ -51,7 +51,7 @@ const links = ['About', 'Careers', 'Events', 'Products', 'Support'];
     left: 0;
     right: 0;
     z-index: 10;
-    padding-top: 64px;
+    padding-block-start: 4rem;
   }
 
   .header-inner {
@@ -66,38 +66,38 @@ const links = ['About', 'Careers', 'Events', 'Products', 'Support'];
   }
 
   .logo img {
-    width: 192px;
+    width: 12rem;
     height: auto;
   }
 
   .desktop-nav ul {
     display: flex;
-    gap: 33px;
+    gap: 2.0625rem;
   }
 
   .desktop-nav a {
     color: var(--white);
-    font-size: 15px;
+    font-size: 0.9375rem;
   }
 
   .menu-toggle {
     display: none;
     position: relative;
     z-index: 30;
-    padding: 4px;
+    padding: 0.25rem;
   }
 
   .mobile-menu {
     display: none;
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 47.9375em) {
     .site-header {
-      padding-top: 40px;
+      padding-block-start: 2.5rem;
     }
 
     .logo img {
-      width: 144px;
+      width: 9rem;
     }
 
     .desktop-nav {
@@ -130,14 +130,14 @@ const links = ['About', 'Careers', 'Events', 'Products', 'Support'];
 
     .mobile-menu ul {
       display: grid;
-      gap: 24px;
+      gap: 1.5rem;
     }
 
     .mobile-menu a {
       font-family: var(--font-heading);
       font-weight: 300;
-      font-size: 24px;
-      line-height: 25px;
+      font-size: 1.5rem;
+      line-height: 1.5625rem;
       text-transform: uppercase;
       color: var(--white);
       display: inline-block;
@@ -146,7 +146,7 @@ const links = ['About', 'Careers', 'Events', 'Products', 'Support'];
 
     .mobile-menu a:hover,
     .mobile-menu a:focus-visible {
-      transform: translateX(8px);
+      transform: translateX(0.5rem);
       color: var(--grey-200);
     }
   }

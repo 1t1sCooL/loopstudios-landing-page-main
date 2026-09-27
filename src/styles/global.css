@@ -8,8 +8,8 @@
   --font-body: 'Alata', sans-serif;
   --font-heading: 'Josefin Sans', sans-serif;
 
-  --container: 1110px;
-  --gutter: 24px;
+  --container: 69.375rem;
+  --gutter: 1.5rem;
 
   --shade-60: rgba(0, 0, 0, 0.6);
   --shade-40: rgba(0, 0, 0, 0.4);
@@ -31,8 +31,8 @@ html {
 
 body {
   font-family: var(--font-body);
-  font-size: 15px;
-  line-height: 25px;
+  font-size: 0.9375rem;
+  line-height: 1.5625rem;
   color: var(--black);
   background: var(--white);
   min-height: 100vh;
@@ -87,9 +87,9 @@ h3 {
   content: '';
   position: absolute;
   left: 50%;
-  bottom: -8px;
-  width: 24px;
-  height: 2px;
+  bottom: -0.5rem;
+  width: 1.5rem;
+  height: 0.125rem;
   background: var(--white);
   transform: translateX(-50%) scaleX(0);
   transform-origin: center;

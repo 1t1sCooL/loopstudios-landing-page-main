@@ -52,14 +52,14 @@ const socials = [
     position: relative;
     background: var(--black);
     color: var(--white);
-    padding: 44px 0 43px;
+    padding: 2.75rem 0 2.6875rem;
   }
 
   .footer-grid {
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
-    row-gap: 24px;
+    row-gap: 1.5rem;
   }
 
   .logo {
@@ -68,13 +68,13 @@ const socials = [
 
   .socials {
     display: flex;
-    gap: 16px;
+    gap: 1rem;
     justify-self: end;
   }
 
   .footer-nav {
     display: flex;
-    gap: 32px;
+    gap: 2rem;
   }
 
   .copyright {
@@ -85,17 +85,17 @@ const socials = [
   .attribution {
     position: absolute;
     left: 50%;
-    bottom: 12px;
+    bottom: 0.75rem;
     transform: translateX(-50%);
     width: max-content;
-    font-size: 11px;
+    font-size: 0.6875rem;
     line-height: 1;
     text-align: center;
     color: var(--grey-500);
   }
 
   .logo img {
-    width: 144px;
+    width: 9rem;
     height: auto;
   }
 
@@ -104,7 +104,7 @@ const socials = [
   }
 
   .footer-nav a {
-    font-size: 15px;
+    font-size: 0.9375rem;
     color: var(--white);
   }
 
@@ -114,7 +114,7 @@ const socials = [
 
   .socials a:hover,
   .socials a:focus-visible {
-    transform: translateY(-2px);
+    transform: translateY(-0.125rem);
   }
 
   .attribution a:hover,
@@ -132,9 +132,9 @@ const socials = [
     }
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 47.9375em) {
     .site-footer {
-      padding: 56px 0;
+      padding: 3.5rem 0;
     }
 
     .footer-grid {
@@ -150,21 +150,21 @@ const socials = [
     .footer-nav {
       flex-direction: column;
       align-items: center;
-      gap: 16px;
-      margin-top: 32px;
+      gap: 1rem;
+      margin-block-start: 2rem;
       text-align: center;
     }
 
     .socials {
       justify-self: center;
       order: 3;
-      margin-top: 48px;
+      margin-block-start: 3rem;
     }
 
     .copyright {
       justify-self: center;
       order: 4;
-      margin-top: 16px;
+      margin-block-start: 1rem;
     }
   }
 </style>

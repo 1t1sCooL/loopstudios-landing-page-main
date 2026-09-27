@@ -41,14 +41,14 @@ const creations = [
 
 <style>
   .creations {
-    margin-top: 184px;
-    margin-bottom: 185px;
+    margin-block-start: 11.5rem;
+    margin-block-end: 11.5625rem;
   }
 
   /* the mockup grid is 4x256px with ~29.3px gaps: 3px wider than the 1110px container */
   .creations-head,
   .grid {
-    width: 1113px;
+    width: 69.5625rem;
     max-width: none;
   }
 
@@ -59,19 +59,19 @@ const creations = [
   }
 
   h2 {
-    font-size: 48px;
-    line-height: 48px;
+    font-size: 3rem;
+    line-height: 3rem;
   }
 
   .see-all {
     display: inline-block;
-    width: 158px;
-    height: 42px;
-    line-height: 40px;
+    width: 9.875rem;
+    height: 2.625rem;
+    line-height: 2.5rem;
     text-align: center;
-    border: 1px solid var(--black);
-    font-size: 14px;
-    letter-spacing: 5px;
+    border: 0.0625rem solid var(--black);
+    font-size: 0.875rem;
+    letter-spacing: 0.3125rem;
     text-transform: uppercase;
     color: var(--black);
   }
@@ -87,19 +87,19 @@ const creations = [
   }
 
   .grid {
-    margin-top: 80px;
+    margin-block-start: 5rem;
     display: grid;
-    grid-template-columns: repeat(4, 256px);
+    grid-template-columns: repeat(4, 16rem);
     justify-content: space-between;
-    row-gap: 29px;
+    row-gap: 1.8125rem;
   }
 
   .card {
     position: relative;
     display: flex;
     align-items: flex-end;
-    height: 450px;
-    padding: 0 20px 32px 40px;
+    height: 28.125rem;
+    padding: 0 1.25rem 2rem 2.5rem;
     background-image: var(--img-desktop);
     background-size: cover;
     background-position: center;
@@ -140,8 +140,8 @@ const creations = [
     z-index: 2;
     font-family: var(--font-heading);
     font-weight: 300;
-    font-size: 32px;
-    line-height: 32px;
+    font-size: 2rem;
+    line-height: 2rem;
     text-transform: uppercase;
     color: var(--white);
   }
@@ -166,10 +166,10 @@ const creations = [
     }
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 47.9375em) {
     .creations {
-      margin-top: 96px;
-      margin-bottom: 95px;
+      margin-block-start: 6rem;
+      margin-block-end: 5.9375rem;
       text-align: center;
     }
 
@@ -178,8 +178,8 @@ const creations = [
     }
 
     h2 {
-      font-size: 32px;
-      line-height: 32px;
+      font-size: 2rem;
+      line-height: 2rem;
     }
 
     .see-all[data-desktop] {
@@ -188,7 +188,7 @@ const creations = [
 
     .see-all[data-mobile] {
       display: inline-block;
-      margin-top: 33px;
+      margin-block-start: 2.0625rem;
     }
 
     .creations-head,
@@ -197,14 +197,14 @@ const creations = [
     }
 
     .grid {
-      margin-top: 48px;
-      gap: 24px;
+      margin-block-start: 3rem;
+      gap: 1.5rem;
       grid-template-columns: 1fr;
     }
 
     .card {
-      height: 120px;
-      padding: 0 0 20px 20px;
+      height: 7.5rem;
+      padding: 0 0 1.25rem 1.25rem;
       background-image: var(--img-mobile);
       text-align: left;
     }
@@ -214,8 +214,8 @@ const creations = [
     }
 
     .card-title {
-      font-size: 24px;
-      line-height: 24px;
+      font-size: 1.5rem;
+      line-height: 1.5rem;
     }
   }
 </style>
